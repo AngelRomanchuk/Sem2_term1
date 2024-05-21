@@ -1,4 +1,4 @@
-// Author: Anhelina Romanchuk;  Date: May 20, 2024
+// Author: Anhelina Romanchuk;  Date: May 21, 2024
 
 // Exercise 1
 function circleArea(r) {
