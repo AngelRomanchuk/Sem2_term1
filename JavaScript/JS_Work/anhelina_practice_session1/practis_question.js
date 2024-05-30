@@ -1,4 +1,4 @@
-// Author: Anhelina Romanchuk;  Date: May 10, 2024
+// Author: Anhelina Romanchuk;  Date: May 10, 2024 
 
 // Exercise 1
 var label = "keyincollege";
