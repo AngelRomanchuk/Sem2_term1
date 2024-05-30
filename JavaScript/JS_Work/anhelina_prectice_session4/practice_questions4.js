@@ -37,9 +37,14 @@ var salutations = [
   "xyzabc",
 ];
 
-function getHello(str) {
-  //replace these comments with your solution
+function getHello (arr) {
+  arr.filter(function (element){
+      if (/hello/i.test(element)) {
+          console.log(element);
+      }
+  })
 }
+getHello(salutations);
 
 /*******************************************************************************
  * Problem 2(based on above solution1 - also make use of any of the functions needed including .map(), .forEach(),filter( ), replace() etc. Whichever is applicable in given condition).
@@ -52,8 +57,11 @@ var strWith10 =
   "There are 10 people in room number 10. Call all of the 10 people outside";
 
 function getHello(str) {
-  //replace these comments with your solution
+  let number = /10/g;
+  console.log(str.replace(number, "ten"));
 }
+getHello(strWith10)
+
 
 /*******************************************************************************
  * Problem 3: clean-up formatting of text.  Specifically, make a given string
@@ -83,8 +91,19 @@ function getHello(str) {
  ******************************************************************************/
 
 function cleanUp(value) {
-  // Replace this comment with your code...
+  value = value
+    .replace(/([.!?])\s+/g, '$1 ')
+    .replace(/"/g, "'")
+    .replace(/\(\s+/g, '(')
+    .replace(/\s+\)/g, ')'); 
+  return value;
 }
+console.log(cleanUp('This is a sentence.  This is another.'))
+console.log(cleanUp('One!  Two?  Three.'))
+console.log(cleanUp('This is "fun."'))
+console.log(cleanUp('A ( red) dog arrived.'))
+console.log(cleanUp('A (red  ) dog arrived.'))
+console.log(cleanUp('A (    red ) dog arrived.'))
 
 /*******************************************************************************
  * Problem 4: fix the formatting of Canadian Postal Codes
