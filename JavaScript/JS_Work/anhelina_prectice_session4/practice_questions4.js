@@ -27,24 +27,24 @@
  *
  ******************************************************************************/
 
-var salutations = [
-  "bye",
-  "hello123",
-  "newhello",
-  "he20llo",
-  "hello",
-  "abchello",
-  "xyzabc",
-];
+// var salutations = [
+//   "bye",
+//   "hello123",
+//   "newhello",
+//   "he20llo",
+//   "hello",
+//   "abchello",
+//   "xyzabc",
+// ];
 
-function getHello (arr) {
-  arr.filter(function (element){
-      if (/hello/i.test(element)) {
-          console.log(element);
-      }
-  })
-}
-getHello(salutations);
+// function getHello (arr) {
+//   arr.filter(function (element){
+//       if (/hello/i.test(element)) {
+//           console.log(element);
+//       }
+//   })
+// }
+// getHello(salutations);
 
 /*******************************************************************************
  * Problem 2(based on above solution1 - also make use of any of the functions needed including .map(), .forEach(),filter( ), replace() etc. Whichever is applicable in given condition).
@@ -53,14 +53,15 @@ getHello(salutations);
  *
  ******************************************************************************/
 
-var strWith10 =
-  "There are 10 people in room number 10. Call all of the 10 people outside";
+// var strWith10 =
+//   "There are 10 people in room number 10. Call all of the 10 people outside";
 
-function getHello(str) {
-  let number = /10/g;
-  console.log(str.replace(number, "ten"));
-}
-getHello(strWith10)
+// function getHello(str) {
+//   let number = /10/g;
+//   let replaceStr = str.replace(number, "ten");
+//   console.log(replaceStr);
+// }
+// getHello(strWith10)
 
 
 /*******************************************************************************
@@ -90,20 +91,20 @@ getHello(strWith10)
  *
  ******************************************************************************/
 
-function cleanUp(value) {
-  value = value
-    .replace(/([.!?])\s+/g, '$1 ')
-    .replace(/"/g, "'")
-    .replace(/\(\s+/g, '(')
-    .replace(/\s+\)/g, ')'); 
-  return value;
-}
-console.log(cleanUp('This is a sentence.  This is another.'))
-console.log(cleanUp('One!  Two?  Three.'))
-console.log(cleanUp('This is "fun."'))
-console.log(cleanUp('A ( red) dog arrived.'))
-console.log(cleanUp('A (red  ) dog arrived.'))
-console.log(cleanUp('A (    red ) dog arrived.'))
+// function cleanUp(value) {
+//   value = value
+//     .replace(/([.!?])\s+/g, '$1 ')
+//     .replace(/"/g, "'")
+//     .replace(/\(\s+/g, '(')
+//     .replace(/\s+\)/g, ')'); 
+//   return value;
+// }
+// console.log(cleanUp('This is a sentence.  This is another.'))
+// console.log(cleanUp('One!  Two?  Three.'))
+// console.log(cleanUp('This is "fun."'))
+// console.log(cleanUp('A ( red) dog arrived.'))
+// console.log(cleanUp('A (red  ) dog arrived.'))
+// console.log(cleanUp('A (    red ) dog arrived.'))
 
 /*******************************************************************************
  * Problem 4: fix the formatting of Canadian Postal Codes
@@ -147,7 +148,7 @@ console.log(cleanUp('A (    red ) dog arrived.'))
  ******************************************************************************/
 
 function fixPostalCode(postalCode) {
-  // Replace this comment with your code...
+  let whiteSpace = /\s+/g;
 }
 
 /*******************************************************************************
@@ -157,7 +158,7 @@ function fixPostalCode(postalCode) {
  * from. Here's the list of Provinces/Territories, their 2-letter short form,
  * and the first letter(s) of the Postal Code that matches it:
  *
- * Province Name                    Short Form      First Letter of Postal Code
+ * Prsovince Name                    Short Form      First Letter of Postal Code
  * -----------------------------------------------------------------------------
  * Ontario                          ON              K, L, M, N, P
  * Quebec                           QC              G, H, J
@@ -206,9 +207,13 @@ function toProvince(postalCode, useLongForm) {
  *
  * */
 
-function checkFirstChar(value) {
-  //Replace this comment with your code....
-}
+// function checkFirstChar(value) {
+//   let firstChar = /^[A-Z]/;
+//   return firstChar.test(value) ? "String's first character is uppercase" : 
+//   "String's first charcter is not uppercase";
+// }
+// console.log(checkFirstChar('Keyin'));
+// console.log(checkFirstChar('keyin'));
 
 /*******************************************************************************
  * Problem 7: A JavaScript function validEmail( str ) that checks whether or not an email by using a general email regular expression.
@@ -224,9 +229,14 @@ function checkFirstChar(value) {
  *
  * */
 
-function validEmail(value) {
-  //Replace this comment with your code....
-}
+// function validEmail(email) {
+//   let emailRight = /^\w+([\.\-\!\#\$\%\&\'\*\+\/\=\?\^\`\{\|\}\~]\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+//   return emailRight.test(email);
+// }
+// console.log(validEmail('anGelin.a32@gmail.com'));
+// console.log(validEmail('anGelin..a32@gmail.com'));
+// console.log(validEmail('anGelin!a32@gmail.com'));
+// console.log(validEmail('angelina32@gmail.com'));
 
 /*******************************************************************************
  * Problem 8: A JavaScript function myTrimFunction( str ) that works like a .trim( )[built-in funciton] of JavaScript.
@@ -237,9 +247,13 @@ function validEmail(value) {
  * and upto so on.....
  * */
 
-function myTrimFunction(str) {
-  //Replace this comment with your code....
-}
+// function myTrimFunction(str) {
+//   let spaceBefore = /^\s+/gi;
+//   let spaceAfter = /$\s+/gi;
+//   return str.replace(spaceBefore, "").replace(spaceAfter, "");
+// }
+// console.log(myTrimFunction("     Keyin Collge       "));
+// console.log(myTrimFunction("     Collge"));
 
 /*******************************************************************************
  * Problem 9: A JavaScript function validateHTML( str ) that checks for an html tag.
@@ -251,6 +265,11 @@ function myTrimFunction(str) {
  * validateHTML("h<tml>"); returns false
  * */
 
-function validateHTML(str) {
-  //Replace this comment with your code....
-}
+// function validateHTML(str) {
+//   let htmlRegex = /^<\/?\s?[a-z]+\s?\/?>$/gi;
+//   return htmlRegex.test(str);
+// }
+// console.log(validateHTML("b"));
+// console.log(validateHTML("</b>"));
+// console.log(validateHTML("<html>"));
+// console.log(validateHTML("h<tm>l"));
