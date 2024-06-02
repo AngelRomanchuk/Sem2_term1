@@ -1,4 +1,5 @@
 /* PRACTICE QUESTIONS ON STRING FUNCTIONS AND REGULAR EXPRESSIONS */
+// Author: Anhelina Romanchuk  Date: May 30 - June 2, 2024
 
 /*******************************************************************************
  * Example Solution 1 : If we want to check the given string contains value keyin irrespective of the case.
@@ -27,24 +28,24 @@
  *
  ******************************************************************************/
 
-// var salutations = [
-//   "bye",
-//   "hello123",
-//   "newhello",
-//   "he20llo",
-//   "hello",
-//   "abchello",
-//   "xyzabc",
-// ];
+var salutations = [
+  "bye",
+  "hello123",
+  "newhello",
+  "he20llo",
+  "hello",
+  "abchello",
+  "xyzabc",
+];
 
-// function getHello (arr) {
-//   arr.filter(function (element){
-//       if (/hello/i.test(element)) {
-//           console.log(element);
-//       }
-//   })
-// }
-// getHello(salutations);
+function getHello (arr) {
+  arr.filter(function (element){
+      if (/hello/i.test(element)) {
+          console.log(element);
+      }
+  })
+}
+getHello(salutations);
 
 /*******************************************************************************
  * Problem 2(based on above solution1 - also make use of any of the functions needed including .map(), .forEach(),filter( ), replace() etc. Whichever is applicable in given condition).
@@ -53,15 +54,15 @@
  *
  ******************************************************************************/
 
-// var strWith10 =
-//   "There are 10 people in room number 10. Call all of the 10 people outside";
+var strWith10 =
+  "There are 10 people in room number 10. Call all of the 10 people outside";
 
-// function getHello(str) {
-//   let number = /10/g;
-//   let replaceStr = str.replace(number, "ten");
-//   console.log(replaceStr);
-// }
-// getHello(strWith10)
+function getHello(str) {
+  let number = /10/g;
+  let replaceStr = str.replace(number, "ten");
+  console.log(replaceStr);
+}
+getHello(strWith10)
 
 
 /*******************************************************************************
@@ -91,20 +92,20 @@
  *
  ******************************************************************************/
 
-// function cleanUp(value) {
-//   value = value
-//     .replace(/([.!?])\s+/g, '$1 ')
-//     .replace(/"/g, "'")
-//     .replace(/\(\s+/g, '(')
-//     .replace(/\s+\)/g, ')'); 
-//   return value;
-// }
-// console.log(cleanUp('This is a sentence.  This is another.'))
-// console.log(cleanUp('One!  Two?  Three.'))
-// console.log(cleanUp('This is "fun."'))
-// console.log(cleanUp('A ( red) dog arrived.'))
-// console.log(cleanUp('A (red  ) dog arrived.'))
-// console.log(cleanUp('A (    red ) dog arrived.'))
+function cleanUp(value) {
+  value = value
+    .replace(/([.!?])\s+/g, '$1 ')
+    .replace(/"/g, "'")
+    .replace(/\(\s+/g, '(')
+    .replace(/\s+\)/g, ')'); 
+  return value;
+}
+console.log(cleanUp('This is a sentence.  This is another.'))
+console.log(cleanUp('One!  Two?  Three.'))
+console.log(cleanUp('This is "fun."'))
+console.log(cleanUp('A ( red) dog arrived.'))
+console.log(cleanUp('A (red  ) dog arrived.'))
+console.log(cleanUp('A (    red ) dog arrived.'))
 
 /*******************************************************************************
  * Problem 4: fix the formatting of Canadian Postal Codes
@@ -148,7 +149,24 @@
  ******************************************************************************/
 
 function fixPostalCode(postalCode) {
-  let whiteSpace = /\s+/g;
+  let whiteSpace = /\s+-?/gi;
+  postalCode = postalCode.replace(whiteSpace, "");
+  
+  let postalRegex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z]\d[ABCEGHJ-NPRSTV-Z]\d$/gi;
+
+  if(postalRegex.test(postalCode) === false){
+    throw new Error('The postal code entered incorectly! Please check it!');
+  } else {
+    postalCode = postalCode.slice(0,3) + " " + postalCode.slice(3,6);
+    postalCode = postalCode.toUpperCase();
+    return postalCode
+  }
+}
+
+try {
+  console.log(fixPostalCode("p1m   -3m9"));
+} catch (e) {
+  console.error(e); 
 }
 
 /*******************************************************************************
@@ -191,10 +209,41 @@ function fixPostalCode(postalCode) {
  * useLongForm - whether to return the long form name
  * returns string- a province (short form by default, or long form if requested)
  ******************************************************************************/
-
 function toProvince(postalCode, useLongForm) {
-  // Replace this comment with your code...
+  try {
+    postalCode = fixPostalCode(postalCode);
+  } catch (error) {
+    console.error(null);
+  }
+
+  if(postalCode[0] == "K" || postalCode[0] == "L" || postalCode[0] == "M" ||  postalCode[0] == "N" || postalCode[0] == "P"){
+    return useLongForm === true ? "Ontario" : "ON";
+  } else if(postalCode[0] == "G" || postalCode[0] == "H" || postalCode[0] == "J"){
+    return useLongForm === true ? "Quebec" : "QC";
+  } else if(postalCode[0] == "B"){
+    return useLongForm === true ? "Nova Scotia" : "NS";
+  } else if(postalCode[0] === "E"){
+    return useLongForm === true ? "New Brunswick" : "NB"; 
+  } else if(postalCode[0] === "R"){
+    return useLongForm === true ? "Manitoba" : "MS";
+  } else if(postalCode[0] === "V"){
+    return useLongForm === true ? "British Columbia" : "BC";
+  } else if(postalCode[0] === "C"){
+    return useLongForm === true ? "Prince Edward island" : "PE";
+  } else if(postalCode[0] === "S"){
+    return useLongForm === true ? "Saskatchewan" : "SK";
+  } else if(postalCode[0] === "T"){
+    return useLongForm === true ? "Alberta" : "AB";
+  } else if(postalCode[0] === "A"){
+    return useLongForm === true ? "Newfoundland and Labrador" : "NL";
+  } else if(postalCode[0] === "X"){
+    return useLongForm === true ? "Nunavut, Northwest Territories" : "NT";
+  } else if(postalCode[0] === "Y"){
+    return useLongForm === true ? "Yukon" : "YT";
+  }
 }
+
+console.log(toProvince("x1m   6g3"))
 
 /*******************************************************************************
  * Problem 6: A JavaScript function checkFirstChar( value ) that checks whether or not the first character in a string is uppercase.
@@ -207,13 +256,13 @@ function toProvince(postalCode, useLongForm) {
  *
  * */
 
-// function checkFirstChar(value) {
-//   let firstChar = /^[A-Z]/;
-//   return firstChar.test(value) ? "String's first character is uppercase" : 
-//   "String's first charcter is not uppercase";
-// }
-// console.log(checkFirstChar('Keyin'));
-// console.log(checkFirstChar('keyin'));
+function checkFirstChar(value) {
+  let firstChar = /^[A-Z]/;
+  return firstChar.test(value) ? "String's first character is uppercase" : 
+  "String's first charcter is not uppercase";
+}
+console.log(checkFirstChar('Keyin'));
+console.log(checkFirstChar('keyin'));
 
 /*******************************************************************************
  * Problem 7: A JavaScript function validEmail( str ) that checks whether or not an email by using a general email regular expression.
@@ -229,14 +278,14 @@ function toProvince(postalCode, useLongForm) {
  *
  * */
 
-// function validEmail(email) {
-//   let emailRight = /^\w+([\.\-\!\#\$\%\&\'\*\+\/\=\?\^\`\{\|\}\~]\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-//   return emailRight.test(email);
-// }
-// console.log(validEmail('anGelin.a32@gmail.com'));
-// console.log(validEmail('anGelin..a32@gmail.com'));
-// console.log(validEmail('anGelin!a32@gmail.com'));
-// console.log(validEmail('angelina32@gmail.com'));
+function validEmail(email) {
+  let emailRight = /^\w+([\.\-\!\#\$\%\&\'\*\+\/\=\?\^\`\{\|\}\~]\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  return emailRight.test(email);
+}
+console.log(validEmail('anGelin.a32@gmail.com'));
+console.log(validEmail('anGelin..a32@gmail.com'));
+console.log(validEmail('anGelin!a32@gmail.com'));
+console.log(validEmail('angelina32@gmail.com'));
 
 /*******************************************************************************
  * Problem 8: A JavaScript function myTrimFunction( str ) that works like a .trim( )[built-in funciton] of JavaScript.
@@ -247,13 +296,13 @@ function toProvince(postalCode, useLongForm) {
  * and upto so on.....
  * */
 
-// function myTrimFunction(str) {
-//   let spaceBefore = /^\s+/gi;
-//   let spaceAfter = /$\s+/gi;
-//   return str.replace(spaceBefore, "").replace(spaceAfter, "");
-// }
-// console.log(myTrimFunction("     Keyin Collge       "));
-// console.log(myTrimFunction("     Collge"));
+function myTrimFunction(str) {
+  let spaceBefore = /^\s+/gi;
+  let spaceAfter = /$\s+/gi;
+  return str.replace(spaceBefore, "").replace(spaceAfter, "");
+}
+console.log(myTrimFunction("     Keyin Collge       "));
+console.log(myTrimFunction("     Collge"));
 
 /*******************************************************************************
  * Problem 9: A JavaScript function validateHTML( str ) that checks for an html tag.
@@ -265,11 +314,11 @@ function toProvince(postalCode, useLongForm) {
  * validateHTML("h<tml>"); returns false
  * */
 
-// function validateHTML(str) {
-//   let htmlRegex = /^<\/?\s?[a-z]+\s?\/?>$/gi;
-//   return htmlRegex.test(str);
-// }
-// console.log(validateHTML("b"));
-// console.log(validateHTML("</b>"));
-// console.log(validateHTML("<html>"));
-// console.log(validateHTML("h<tm>l"));
+function validateHTML(str) {
+  let htmlRegex = /^<\/?\s?[a-z]+\s?\/?>$/gi;
+  return htmlRegex.test(str);
+}
+console.log(validateHTML("b"));
+console.log(validateHTML("</b>"));
+console.log(validateHTML("<html>"));
+console.log(validateHTML("h<tm>l"));
