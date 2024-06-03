@@ -12,8 +12,9 @@
         <!-- Heading Centered -->
         <h1>Create Your ToDo List for Today</h1>
         <p>Please enter the following information</p>
+        <div id="notification"></div>
 
-        <!-- From to fill -->
+        <!-- Form to fill -->
         <form id="form">
             <div>
                 <label for="task_name">Task Name:</label><br/>
@@ -21,9 +22,9 @@
                 placeholder="Please enter your task here:">
             </div><br/>
             <div>
-                <label for="checklist">Add 5 Checklists seperated by ",":</label><br/>
+                <label for="checklist">Add Up To 5 Checklists seperated by ",":</label><br/>
                 <input type="text" class="enter" id="checklist" name="checklist"
-                placeholder="Plaese enter the checklist task:">
+                placeholder="Plaese enter the checklists tasks here:">
             </div><br/>
             <div>
                 <label for="due_to">Due To:</label><br/>
@@ -45,17 +46,17 @@
             <input type="submit" class="button" id="submit" value="Submit">
             <input type="reset" class="button" id="reset" value="Reset">
         </form>   
-        <div id="todo_list">
-            <h4 id="task_name_list"> <!--create and add a task name--> </h4>
-            <date id="due_to_list"> <!-- create and add a date --> </date>
-            <h5>Checklist:</h5>
-            <div id="checklist_list">
+        <div id="box_for_todo">
+            <!-- <h4 id="task_name_list"> create and add a task name </h4> -->
+            <!-- <date id="due_to_list"> create and add a date </date> -->
+            <!-- <h5>Checklist:</h5> -->
+            <!-- <div id="checklist_list"> -->
                 <!-- <input type="checkbox" id="check" name="check"> -->
                 <!-- <lable for="check"> create each lable and add every checklist data by its position</lable> -->
-            </div>
-            <h5>Tag:</h5>
-            <p id="tag_list"> <!-- ~~<em> create and add a tag </em>~~  --> </p>
-            <div id="button_list"><!-- <button>Complete</button><button>Skip</button> --></div>
+            <!-- </div> -->
+            <!-- <h5>Tag:</h5> -->
+            <!-- <p id="tag_list"> ~~<em> create and add a tag </em>~~  </p> -->
+            <!-- <div id="button_list"><button>Complete</button><button>Skip</button></div> -->
         </div>  
         
         <!-- Table where the number of completed and skiped taskes will be add and updated -->
