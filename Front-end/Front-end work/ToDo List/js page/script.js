@@ -4,36 +4,48 @@ window.addEventListener("DOMContentLoaded", function() { // Load a contant first
     form.addEventListener("submit", function(e) {
         let taskName = document.querySelector("#task_name").value;
         let checklist = document.querySelector("#checklist").value;
+        checklist = checklist.split(",");
         let dueTo = document.querySelector("#due_to").value;
         let tag = document.querySelector("#tag").value;
 
         console.log(taskName, checklist, dueTo, tag);
 
-        addToDoList(taskName, checklist, dueTo, tag)
+        console.log(addToDoList(taskName, checklist, dueTo, tag));
         e.preventDefault();
     });
 
     function addToDoList(tn, ch, due, t) {
         // task name
-        let row1 = document.createElement("tr");
-        row1.innerHTML = `<th>${tn}</th>`;
-        document.querySelector("#todo_list").appendChild(row1);
+        document.querySelector("#task_name_list").innerText = tn;
         // due to
-        let row2 = document.createElement("tr");
-        row2.innerHTML = `<td>${due}</td>`;
-        document.querySelector("#todo_list").appendChild(row2);
+        document.querySelector("#due_to_list").innerText = due;
         // checklist
-        let row3 = document.createElement("tr");
-        row3.innerHTML = `<td>${ch}</td>`;
-        document.querySelector("#todo_list").appendChild(row3);
+        // Get the div where the checklist items will be added
+        var div = document.querySelector("#checklist_list");
+
+        // Loop through the checklist array
+        for (var i = 0; i < ch.length; i++) {
+            // Create a new label element
+            var row = document.createElement("label");
+            // Set the text content of the label
+            row.innerText = ch[i];
+
+            // Create a new input element (checkbox)
+            var input = document.createElement("input");
+            input.type = "checkbox";
+            input.id = "check" + (i + 3); // Generate unique IDs for checkboxes
+            // Append the input element to the label
+            row.appendChild(input);
+
+            // Append the label (with the input inside) to the div
+            div.appendChild(row);
+            // Add a line break after each label (for better spacing)
+            div.appendChild(document.createElement("br"));
+        }
         // tags
-        let row4 = document.createElement("tr");
-        row4.innerHTML = `<td>${t}</td>`;
-        document.querySelector("#todo_list").appendChild(row4);
+        document.querySelector("#tag_list").innerHTML = `~~<em>${t}</em>~~`;
         // buttons
-        let row5 = document.createElement("tr");
-        row5.innerHTML = `<td><button>Complete</button></td>`;
-        document.querySelector("#todo_list").appendChild(row5);
+        document.querySelector("#button_list").innerHTML = `<button>Complete</button><button>Skip</button>`;
 
         clearForm();
     }
@@ -44,4 +56,5 @@ window.addEventListener("DOMContentLoaded", function() { // Load a contant first
         let dueTo = document.querySelector("#due_to").value="";
         let tag = document.querySelector("#tag").value="";
     }
+
 });

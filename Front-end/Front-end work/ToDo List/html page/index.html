@@ -21,9 +21,9 @@
                 placeholder="Please enter your task here:">
             </div><br/>
             <div>
-                <label for="checklist">Add Checklist (hit the button to add it to a checklist):</label><br/>
+                <label for="checklist">Add 5 Checklists seperated by ",":</label><br/>
                 <input type="text" class="enter" id="checklist" name="checklist"
-                placeholder="Plaese enter the cheacklist task and hit the button:">
+                placeholder="Plaese enter the checklist task:">
             </div><br/>
             <div>
                 <label for="due_to">Due To:</label><br/>
@@ -33,42 +33,31 @@
             <div>
                 <label for="tag">Tag:</label><br/>
                 <select name="tag" class="enter" id="tag">
-                    <option value="volvo">School/Work</option>
-                    <option value="saab">Health</option>
-                    <option value="opel">Exercise</option>
-                    <option value="audi">Creativity</option>
-                    <option value="audi">Family</option>
-                    <option value="audi">Chores</option>
-                    <option value="audi">Self Care</option>
+                    <option value="School/Work">School/Work</option>
+                    <option value="Health">Health</option>
+                    <option value="Exercise">Exercise</option>
+                    <option value="Creativity">Creativity</option>
+                    <option value="Family">Family</option>
+                    <option value="Chores">Chores</option>
+                    <option value="Self Care">Self Care</option>
                 </select>
             </div>
             <input type="submit" class="button" id="submit" value="Submit">
             <input type="reset" class="button" id="reset" value="Reset">
-        </form>
-
-        <!-- Table where the values from form will be -->
-        <!-- (new page for the ToDo list) -->
-        <h1>Your ToDo List</h1>
-        <table>
-            <tbody id="todo_list">
-                <!-- <tr>
-                    Add a task name 
-                </tr>
-                <tr>
-                     Add a due to 
-                </tr>
-                <tr>
-                    Add a chekclist
-                </tr>
-                <tr>
-                     Add a chekclist 
-                </tr>
-                <tr>
-                    button comlete/skiped 
-                </tr> -->
-            </tbody>
-        </table>
-
+        </form>   
+        <div id="todo_list">
+            <h4 id="task_name_list"> <!--create and add a task name--> </h4>
+            <date id="due_to_list"> <!-- create and add a date --> </date>
+            <h5>Checklist:</h5>
+            <div id="checklist_list">
+                <!-- <input type="checkbox" id="check" name="check"> -->
+                <!-- <lable for="check"> create each lable and add every checklist data by its position</lable> -->
+            </div>
+            <h5>Tag:</h5>
+            <p id="tag_list"> <!-- ~~<em> create and add a tag </em>~~  --> </p>
+            <div id="button_list"><!-- <button>Complete</button><button>Skip</button> --></div>
+        </div>  
+        
         <!-- Table where the number of completed and skiped taskes will be add and updated -->
         <table>
             <thead>
