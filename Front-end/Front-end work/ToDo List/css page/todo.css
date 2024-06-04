@@ -138,3 +138,22 @@ input[type=checkbox] {
     background-color: rgb(0, 105, 94);
     color: white;
 }
+
+
+table {
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
+}
+thead{
+    font-size: 20pt;
+}
+tbody{
+    font-size: 16pt;
+    font-weight: 700;
+}
+th, td {
+    border: 2px solid rgb(0, 105, 94);
+    width: 50%;
+    height: auto;
+}
