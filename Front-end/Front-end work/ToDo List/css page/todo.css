@@ -4,22 +4,8 @@
 
     background-color: cadetblue;
     border: 2px solid rgb(0, 105, 94);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-/* Some classes that applies around all page */
-.button {
-    border-radius: 7%;
-    border: 5px solid rgb(0, 105, 94);
-    background-color: rgb(144, 239, 239);
-    margin: 3%;
-    font-size: 16px;
-    font-weight: 700;
-}
-.button:hover {
-    border: 5px solid rgb(144, 239, 239);
-    background-color: rgb(0, 105, 94);
-    color: white;
-}
-
 
 /* Alert Style */
 .success, .error {
@@ -78,14 +64,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background: transparent;
 }
 
+.button {
+    width: 12%;
+    height: 40px;
+    border-radius: 7%;
+    border: 5px solid rgb(0, 105, 94);
+    background-color: rgb(144, 239, 239);
+    margin: 3%;
+    font-size: 16px;
+    font-weight: 700;
+}
+.button:hover {
+    border: 5px solid rgb(144, 239, 239);
+    background-color: rgb(0, 105, 94);
+    color: white;
+}
 #submit {
     margin-left: 35%;
-    width: 12%;
-    height: 40px;
-}
-#reset {
-    width: 12%;
-    height: 40px;
 }
 
 
@@ -106,6 +101,40 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding-bottom: 10px;
     text-align: center;
 }
-#checklist_list {
-    font-size: 8pt;
+#tag_list{
+    font-size: 12pt;
+}
+input[type=checkbox] {
+    transform: scale(1);
+    margin-right: 7px;
+}
+#text_checkbox {
+    font-size: 12pt;
+}
+.complete_button {
+    border-radius: 7%;
+    border: 5px solid rgb(0, 105, 94);
+    background-color: rgb(144, 239, 239);
+    margin: 3%;
+    font-size: 16px;
+    font-weight: 700;
+}
+.complete_button:hover {
+    border: 5px solid rgb(144, 239, 239);
+    background-color: rgb(0, 105, 94);
+    color: white;
+}
+
+.skip_button {
+    border-radius: 7%;
+    border: 5px solid rgb(0, 105, 94);
+    background-color: rgb(144, 239, 239);
+    margin: 3%;
+    font-size: 16px;
+    font-weight: 700;
+}
+.skip_button:hover {
+    border: 5px solid rgb(144, 239, 239);
+    background-color: rgb(0, 105, 94);
+    color: white;
 }
