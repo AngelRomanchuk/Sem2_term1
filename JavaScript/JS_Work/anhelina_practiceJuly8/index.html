@@ -53,12 +53,22 @@
         <div class="answer">
           Answer:<br />
 
-          <!-- Replace this comment with your code as per requirements given in question1 of question paper.. -->
+          <div class="input">
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+          </div>
+          <div class="input">
+              <label for="age">Age:</label>
+              <input type="number" id="age">
+          </div>
+          <button onclick="makeObj()">Submit</button>
+          <button onclick="displayObj()">Display Users</button>
+          <div id="userList"></div>
         </div>
       </section>
       <section id="question2">
         <p class="question">
-          Question#02 <button id="btnq2">Show JSON</button>
+          Question#02 <button onclick="showJSON()">Show JSON</button>
         </p>
         <div class="answer">
           Answer:
