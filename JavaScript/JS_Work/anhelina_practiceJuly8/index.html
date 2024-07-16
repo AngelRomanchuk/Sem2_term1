@@ -41,6 +41,21 @@
         width: 300px;
         font-size: 0.9em;
       }
+      .box{
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: #ffbc11;
+        max-width: 500px;
+        margin: 20px;
+        padding: 10px 20px;
+        color: black;
+      }
+      .mimeInput{
+        display: flex;
+      }
+      .mimeInput input{
+        margin-left: 10px;
+      }
     </style>
     <title>Practice Questions</title>
   </head>
@@ -52,20 +67,24 @@
         <p class="question">Question#01</p>
         <div class="answer">
           Answer:<br />
-
-          <div class="input">
-            <label for="name">Name:</label>
-            <input type="text" id="name">
+          <div class="box">
+            <div class="input">
+              <label for="name">Name:</label>
+              <input type="text" id="name">
+            </div>
+            <div class="input">
+                <label for="age">Age:</label>
+                <input type="number" id="age">
+            </div>
+            <button onclick="makeObj()">Submit</button>
+            <button onclick="displayObj()">Display Users</button>
+            <div id="userList"></div>
           </div>
-          <div class="input">
-              <label for="age">Age:</label>
-              <input type="number" id="age">
-          </div>
-          <button onclick="makeObj()">Submit</button>
-          <button onclick="displayObj()">Display Users</button>
-          <div id="userList"></div>
         </div>
+
       </section>
+
+
       <section id="question2">
         <p class="question">
           Question#02 <button onclick="showJSON()">Show JSON</button>
@@ -75,10 +94,23 @@
 
           <p id="q2"></p>
         </div>
+
       </section>
+
+
       <section id="question3">
         <p class="question">Question#03</p>
-        <div class="answer">Answer:</div>
+        <div class="answer">Answer:</br>
+          <div class="box">
+            <div class="mimeInput">
+              <label for="fileName">File Name:</label>
+              <input type="text" id="fileName">
+            </div>
+            <button onclick="mimeType()">Mime Type</button>
+            <div id="mimeType"></div>
+          </div>
+        </div>
+
       </section>
     </div>
 

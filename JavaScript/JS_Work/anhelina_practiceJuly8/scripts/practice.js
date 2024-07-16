@@ -22,7 +22,7 @@ function displayObj(){
     // For each user desplay
     users.forEach(user => {
         const userDiv = document.createElement('div');
-        userDiv.textContent = `Name: ${user.name}, Age: ${user.age}`;
+        userDiv.innerHTML = `Name: ${user.name}<br>Age: ${user.age}`;
         userList.appendChild(userDiv);
     });
 }
@@ -61,3 +61,33 @@ function showJSON() {
 
 
 /*** Question 3***/
+function mimeType() {
+    const mimeMap = {
+        'txt': 'text/plain', 'html': 'text/html', 'htm': 'text/html', 'css': 'text/css', 'js': 'text/javascript',
+        'jpeg': 'image/jpeg', 'jpg': 'image/jpeg', 'gif': 'image/gif', 'bmp': 'image/bmp', 'ico': 'image/x-icon',
+        'cur': 'image/x-icon', 'png': 'image/png', 'svg': 'image/svg+xml', 'webp': 'image/webp', 'mp3': 'audio/mp3',
+        'wav': 'audio/wav', 'mp4': 'video/mp4', 'webm': 'video/webm', 'json': 'application/json', 'mpeg': 'video/mpeg',
+        'csv': 'text/csv', 'ttf': 'font/ttf', 'woff': 'font/woff', 'zip': 'application/zip', 'avi': 'video/x-msvideo'
+    };
+
+    let mimeBox = document.querySelector('#mimeType');
+    let fileNameInput = document.querySelector('#fileName');
+    let fileName = fileNameInput.value.trim();
+
+    if (fileName === '') {
+        alert('Error, please enter a file name.');
+        return;
+    }
+
+    let parts = fileName.split('.');
+    let extension = parts[parts.length - 1].toLowerCase();
+
+    if (extension in mimeMap) {
+        let mimeType = mimeMap[extension];
+        let outputMime = `Mime Type: <strong>${mimeType}</strong>`;
+        mimeBox.innerHTML = outputMime;
+    } else {
+        alert('Error, please enter the right file name.');
+        mimeBox.textContent = '';
+    }
+}
