@@ -1,4 +1,6 @@
+//  Header is a Name and button Add
 import PropTypes from 'prop-types'
+import { GoCheckCircle } from "react-icons/go";
 import Button from './Button';
 
 function Header({title}) {
@@ -7,7 +9,7 @@ function Header({title}) {
     }
   return (
     <header>
-      <h1>{title}</h1>
+      <h1><GoCheckCircle style={{marginRight: "10px"}}/>{title}</h1>
       <Button text="Add" color="green" onClick={onClick}/>
     </header>
   );

@@ -1,3 +1,4 @@
+// Button component for all buttons there
 import React from 'react'
 
 function Button({text, color, onClick}) {
