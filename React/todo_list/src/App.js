@@ -1,15 +1,11 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './Components/Header';
 import Tasks from './Components/Tasks';
 import AddTask from './Components/AddTask';
 
 function App() {
-  const[tasks, setTasks] = useState([
-    {id:1, text:'Apointment', date:'July 20, 2024 at 1pm', reminder:true},
-    {id:2, text:'School', date:'July 24, 2024 at 10am', reminder:false},
-    {id:3, text:'Clean', date:'July 23, 2024 at 12pm', reminder:true},
-  ]);
+  const[tasks, setTasks] = useState([]);
 
   const[showAddTask, setShowAddTask] = useState(false);
 
@@ -33,7 +29,19 @@ function App() {
     setTasks([...tasks,newTask]);
   };
 
-  
+  const fetchTasks = async () => {
+    const res = await fetch("http://localhost:5000/tasks");
+    const data = await res.json();
+
+    return data;
+  };
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks();
+      setTasks(tasksFromServer);
+    };
+    getTasks();
+  }, []);
 
   // Main what to show on page
   return (

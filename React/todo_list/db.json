@@ -1,0 +1,7 @@
+{
+    "tasks":[
+        {"id":1, "text":"Apointment", "date":"July 20, 2024 at 1pm", "reminder":true},
+        {"id":2, "text":"School", "date":"July 24, 2024 at 10am", "reminder":false},
+        {"id":3, "text":"Clean", "date":"July 23, 2024 at 12pm", "reminder":true}
+    ]
+}
