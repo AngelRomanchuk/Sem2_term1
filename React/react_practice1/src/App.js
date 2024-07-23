@@ -1,13 +1,13 @@
 import './App.css';
 import Home from './Components/Home';
-import RandomAdvice from './Components/RandomAdvice';
+import Navigation from './Components/Navigation';
 
 function App() {
   return (
     <div className="box">
       <Home />
 
-      <RandomAdvice />
+      <Navigation />
     </div>
   );
 }
