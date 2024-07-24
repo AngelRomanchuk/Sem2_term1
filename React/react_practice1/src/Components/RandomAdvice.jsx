@@ -12,7 +12,8 @@ const RandomAdvice = () => {
 
   return (
     <div className='advice'>
-      <div>
+      <div className='advice_randomizer'>
+        <p className='bold_gray'>One Advice</p>
         <button onClick={fetchAdvice}>Generate one advice</button>
       </div>
       <div>

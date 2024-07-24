@@ -7,7 +7,7 @@ h1{
   font-size: 36pt;
   color: rgb(35, 35, 53);
 }
-p{
+p, label{
   font-size: 14pt;
   color: rgb(44, 74, 85);
   margin: 10px;
@@ -36,6 +36,9 @@ button{
   margin: 30px auto;
   padding: 20px 30px;
 }
+.bold_gray{
+  font-weight: 700;
+}
 
 .banner {
   display: flex;
@@ -60,4 +63,9 @@ button{
   padding: 10px;
 }
 
+#numAdvicesInput{
+  margin: 0px 10px;
+  padding: 2px;
+  font-size: 10pt;
+}
 
