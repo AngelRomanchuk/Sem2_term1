@@ -10,23 +10,46 @@ function App() {
   const[showAddTask, setShowAddTask] = useState(false);
 
   // To Delete A Task
-  const deleteTask = (id) => {
-    // console.log("delete", id);
-    setTasks(tasks.filter((task) => task.id != id)) // Match ids and if it is found it is filtered that task (deletes it)
+  const deleteTask = async (id) => {
+    // bring the task with given id
+    await fetch(`http://localhost:5000/tasks/${id}`, {method:"DELETE"});
+
+    setTasks(tasks.filter((task)=>task.id !== id));
   };
 
   // To Toggle Reminder true or false
-  const toggleReminder=(id)=>{
+  const toggleReminder= async (id)=>{
+    const taskToToggle = await fetchTask(id);
+    const updTask = {...taskToToggle, reminder: !taskToToggle.reminder};
+
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {method: 'PUT', 
+      headers: {
+      "Content-type":"application/json",
+      },
+      body: JSON.stringify(updTask),
+    })
+
     setTasks(tasks.map((task) => task.id === id ? {...task,reminder : !task.reminder} : task));
   };
 
   // To Add Task
-  const addTask = (task) => {
+  const addTask = async (task) => {
     // console.log(task);
 
-    const id=Math.floor(Math.random()*1000)+1;
-    const newTask = {id, ...task}; // create new task and embed id with it
-    setTasks([...tasks,newTask]);
+    const res = await fetch("http://localhost:5000/tasks", {
+      method: "POST", 
+      headers: {
+        "Content-type":"application/json",
+      }, 
+      body: JSON.stringify(task),
+    });
+
+    const data = await res.json();
+    setTasks([...tasks, data]);
+
+    // const id=Math.floor(Math.random()*1000)+1;
+    // const newTask = {id, ...task}; // create new task and embed id with it
+    // setTasks([...tasks,newTask]);
   };
 
   const fetchTasks = async () => {
@@ -35,6 +58,14 @@ function App() {
 
     return data;
   };
+
+  const fetchTask = async (id) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`);
+    const data = await res.json();
+    return data;
+  }
+
+
   useEffect(() => {
     const getTasks = async () => {
       const tasksFromServer = await fetchTasks();
