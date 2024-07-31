@@ -1,8 +1,13 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 import Header from './Components/Header';
 import Tasks from './Components/Tasks';
 import AddTask from './Components/AddTask';
+import Footer from './Components/Footer';
+import Contact from './Components/Contact';
+import About from './Components/About';
+import TaskDetails from './Components/TaskDetails';
 
 function App() {
   const[tasks, setTasks] = useState([]);
@@ -76,12 +81,28 @@ function App() {
 
   // Main what to show on page
   return (
-    <div className="container">
-      <Header title="ToDo List" onAdd={()=>setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
-      {showAddTask && <AddTask onAdd={addTask}/>}
+    <Router>
+      <div className="container">
+        <Link to='/contact'>Contact</Link> | 
+        <Link to='/'>Home</Link> | 
+        <Link to='/about'>About</Link> | 
+        <Header title="ToDo List" onAdd={()=>setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
+        <Routes>
+          <Route path='/' element={
+            <>
+              {showAddTask && <AddTask onAdd={addTask}/>}
 
-      {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>):("No tasks to show")}
-    </div>
+              {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>):("No tasks to show")}
+            </>
+          } />
+        
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/task/:id' element={<TaskDetails />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

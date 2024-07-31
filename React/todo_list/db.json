@@ -7,16 +7,10 @@
       "reminder": true
     },
     {
-      "id": "3",
-      "text": "Clean",
-      "date": "July 23, 2024 at 12pm",
-      "reminder": false
-    },
-    {
-      "id": "edbc",
-      "text": "asfdas",
-      "date": "asfas",
-      "reminder": true
+      "id": "2f14",
+      "text": "Gym",
+      "date": "Every day",
+      "reminder": "false"
     }
   ]
 }
